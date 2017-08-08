@@ -28,6 +28,7 @@ from plinth import frontpage
 from plinth import service as service_module
 from plinth.menu import main_menu
 from plinth.utils import format_lazy
+from plinth.modules import users
 
 
 version = 1
@@ -98,6 +99,7 @@ def setup(helper, old_version=None):
             is_running=is_running)
     helper.call('post', service.notify_enabled, None, True)
     helper.call('post', add_shortcut)
+    helper.call('post', users.add_user_group('syncthing'))
 
 
 def add_shortcut():

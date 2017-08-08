@@ -116,6 +116,14 @@ remove_user_from_group()
     flush_cache
 }
 
+add_user_group()
+{
+    groupname="$1"
+    echo "bharat=${groupname}"
+
+    ldapaddgroup $groupname > /dev/null 2>&1 || true
+}
+
 
 flush_cache()
 {
@@ -148,6 +156,9 @@ case $command in
     ;;
     remove-user-from-group)
         remove_user_from_group "$@"
+    ;;
+    add-user-group)
+        add_user_group "$@"
     ;;
     *)
         echo "Invalid sub-command"

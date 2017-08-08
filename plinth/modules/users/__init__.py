@@ -84,3 +84,6 @@ def _diagnose_ldap_entry(search_item):
 
     return [_('Check LDAP entry "{search_item}"')
             .format(search_item=search_item), result]
+
+def add_user_group(group_name):
+    actions.superuser_run('ldap', ['add-user-group', group_name])
